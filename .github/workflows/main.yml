@@ -31,3 +31,9 @@ jobs:
 
       - name: execute docfx
         run: docfx
+
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with: 
+          name: docfx output
+          path: _site/
