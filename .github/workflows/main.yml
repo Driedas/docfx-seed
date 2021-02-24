@@ -35,7 +35,7 @@ jobs:
       - name: push changes
         if: success()
         run: |
-          git add ./_site
+          git add ./_site --force
           git commit "compiled site update"
 
       - uses: ad-m/github-push-action@master
