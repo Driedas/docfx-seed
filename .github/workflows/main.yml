@@ -26,7 +26,7 @@ jobs:
       - name: install docfx
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: -h
+          args: install docfx --force
 
       # Runs a single command using the runners shell
       #- name: execute docfx
