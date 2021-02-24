@@ -36,7 +36,7 @@ jobs:
         if: success()
         run: |
           git add ./_site --force
-          git commit -m "compiled site update"
+          git commit --message "compiled site update" --author="Github actions daemon <builder@wearefreemarket.com>" 
 
       - name: push changes
         uses: ad-m/github-push-action@master
