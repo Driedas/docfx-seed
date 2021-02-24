@@ -32,13 +32,14 @@ jobs:
       - name: execute docfx
         run: docfx
 
-      - name: push changes
+      - name: commit changes
         if: success()
         run: |
           git add ./_site --force
-          git commit "compiled site update"
+          git commit -m "compiled site update"
 
-      - uses: ad-m/github-push-action@master
+      - name: push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
