@@ -32,8 +32,13 @@ jobs:
       - name: execute docfx
         run: docfx
 
-      - uses: actions/upload-artifact@v2
+      - name: push changes
         if: success()
-        with: 
-          name: docfx output
-          path: _site/
+        run: |
+          git add ./_site
+          git commit "compiled site update"
+
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
