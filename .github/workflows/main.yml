@@ -23,7 +23,7 @@ jobs:
 
       - name: download latest swagger spec
         run: |
-           http get https://portal.wearefreemarket.com/api/swagger/docs/v1 > _site/swagger.json
+           wget https://portal.wearefreemarket.com/api/swagger/docs/v1 > _site/swagger.json
            
       - name: install docfx
         uses: crazy-max/ghaction-chocolatey@v1
