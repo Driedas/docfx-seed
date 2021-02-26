@@ -14,16 +14,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout latest version
-        uses: actions/checkout@v2
-
-      - name: install httpie
-        uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install httpie --force          
+        uses: actions/checkout@v2     
 
       - name: download latest swagger spec
         run: |
-           wget https://portal.wearefreemarket.com/api/swagger/docs/v1 > _site/swagger.json
+           curl https://portal.wearefreemarket.com/api/swagger/docs/v1 > _site/swagger.json
            
       - name: install docfx
         uses: crazy-max/ghaction-chocolatey@v1
