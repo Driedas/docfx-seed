@@ -21,12 +21,11 @@ jobs:
         with:
           args: install docfx --force
 
-      - name: execute docfx
+      - name: execute docfx to compile site
         run: |
-          cd $GITHUB_WORKSPACE
           docfx
 
-      - name: commit changes
+      - name: commit compiled site
         if: success()
         run: |
           git config user.name "Github actions"
@@ -34,7 +33,7 @@ jobs:
           git add ./_site --force
           git commit --message "compiled site update"  
 
-      - name: push changes
+      - name: push compiled site
         if: success()
         uses: ad-m/github-push-action@master
         with:
