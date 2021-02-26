@@ -17,29 +17,27 @@ jobs:
         uses: actions/checkout@v2     
 
       - name: download latest swagger spec
-        run: |
-           curl https://portal.wearefreemarket.com/api/swagger/docs/v1 > _site/swagger.json
-           
+        run: curl -o _site/swagger.json https://portal.wearefreemarket.com/api/swagger/docs/v1
+
       - name: install docfx
         uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install docfx --force
 
-#      - name: execute docfx to compile site
-#        run: |
-#          docfx
+      - name: execute docfx to compile site
+        run: docfx
 
-#      - name: commit compiled site
-#        if: success()
-#        run: |
-#          git config user.name "Github actions"
-#          git config user.email builder@wearefreemarket.com
-#          git add ./_site --force
-#          git diff --staged --quiet || git commit --message "compiled site automated update"
+      - name: commit compiled site
+        if: success()
+        run: |
+          git config user.name "Github actions"
+          git config user.email builder@wearefreemarket.com
+          git add ./_site --force
+          git diff --staged --quiet || git commit --message "compiled site automated update"
 
-#      - name: push compiled site
-#        if: success()
-#        uses: ad-m/github-push-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: ${{ github.ref }}
+      - name: push compiled site
+        if: success()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
