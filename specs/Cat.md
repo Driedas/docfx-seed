@@ -4,7 +4,7 @@ remarks: '*THIS* is remarks overridden in *MARKDWON* file'
 ---
 
 This is a class talking about [CAT](https://en.wikipedia.org/wiki/Cat).
-
+foo update
 >**NOTE**
 > This is a CAT class
 >
